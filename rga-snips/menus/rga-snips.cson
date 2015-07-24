@@ -1,0 +1,22 @@
+# See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
+'context-menu':
+  'atom-text-editor': [
+    {
+      'label': 'Toggle rga-snips'
+      'command': 'rga-snips:toggle'
+    }
+  ]
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'rga-snips'
+      'submenu': [
+        {
+          'label': 'Toggle'
+          'command': 'rga-snips:toggle'
+        }
+      ]
+    ]
+  }
+]

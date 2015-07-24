@@ -1,13 +1,13 @@
 module.exports =
-class RgaSnippetsView
+class RgaSnipsView
   constructor: (serializedState) ->
     # Create root element
     @element = document.createElement('div')
-    @element.classList.add('rga-snippets')
+    @element.classList.add('rga-snips')
 
     # Create message element
     message = document.createElement('div')
-    message.textContent = "The RgaSnippets package is Alive! It's ALIVE!"
+    message.textContent = "The RgaSnips package is Alive! It's ALIVE!"
     message.classList.add('message')
     @element.appendChild(message)
 

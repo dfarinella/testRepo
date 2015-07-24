@@ -1,40 +1,40 @@
-RgaSnippets = require '../lib/rga-snippets'
+RgaSnips = require '../lib/rga-snips'
 
 # Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
 #
 # To run a specific `it` or `describe` block add an `f` to the front (e.g. `fit`
 # or `fdescribe`). Remove the `f` to unfocus the block.
 
-describe "RgaSnippets", ->
+describe "RgaSnips", ->
   [workspaceElement, activationPromise] = []
 
   beforeEach ->
     workspaceElement = atom.views.getView(atom.workspace)
-    activationPromise = atom.packages.activatePackage('rga-snippets')
+    activationPromise = atom.packages.activatePackage('rga-snips')
 
-  describe "when the rga-snippets:toggle event is triggered", ->
+  describe "when the rga-snips:toggle event is triggered", ->
     it "hides and shows the modal panel", ->
       # Before the activation event the view is not on the DOM, and no panel
       # has been created
-      expect(workspaceElement.querySelector('.rga-snippets')).not.toExist()
+      expect(workspaceElement.querySelector('.rga-snips')).not.toExist()
 
       # This is an activation event, triggering it will cause the package to be
       # activated.
-      atom.commands.dispatch workspaceElement, 'rga-snippets:toggle'
+      atom.commands.dispatch workspaceElement, 'rga-snips:toggle'
 
       waitsForPromise ->
         activationPromise
 
       runs ->
-        expect(workspaceElement.querySelector('.rga-snippets')).toExist()
+        expect(workspaceElement.querySelector('.rga-snips')).toExist()
 
-        rgaSnippetsElement = workspaceElement.querySelector('.rga-snippets')
-        expect(rgaSnippetsElement).toExist()
+        rgaSnipsElement = workspaceElement.querySelector('.rga-snips')
+        expect(rgaSnipsElement).toExist()
 
-        rgaSnippetsPanel = atom.workspace.panelForItem(rgaSnippetsElement)
-        expect(rgaSnippetsPanel.isVisible()).toBe true
-        atom.commands.dispatch workspaceElement, 'rga-snippets:toggle'
-        expect(rgaSnippetsPanel.isVisible()).toBe false
+        rgaSnipsPanel = atom.workspace.panelForItem(rgaSnipsElement)
+        expect(rgaSnipsPanel.isVisible()).toBe true
+        atom.commands.dispatch workspaceElement, 'rga-snips:toggle'
+        expect(rgaSnipsPanel.isVisible()).toBe false
 
     it "hides and shows the view", ->
       # This test shows you an integration test testing at the view level.
@@ -45,18 +45,18 @@ describe "RgaSnippets", ->
       # workspaceElement to the DOM are generally slower than those off DOM.
       jasmine.attachToDOM(workspaceElement)
 
-      expect(workspaceElement.querySelector('.rga-snippets')).not.toExist()
+      expect(workspaceElement.querySelector('.rga-snips')).not.toExist()
 
       # This is an activation event, triggering it causes the package to be
       # activated.
-      atom.commands.dispatch workspaceElement, 'rga-snippets:toggle'
+      atom.commands.dispatch workspaceElement, 'rga-snips:toggle'
 
       waitsForPromise ->
         activationPromise
 
       runs ->
         # Now we can test for view visibility
-        rgaSnippetsElement = workspaceElement.querySelector('.rga-snippets')
-        expect(rgaSnippetsElement).toBeVisible()
-        atom.commands.dispatch workspaceElement, 'rga-snippets:toggle'
-        expect(rgaSnippetsElement).not.toBeVisible()
+        rgaSnipsElement = workspaceElement.querySelector('.rga-snips')
+        expect(rgaSnipsElement).toBeVisible()
+        atom.commands.dispatch workspaceElement, 'rga-snips:toggle'
+        expect(rgaSnipsElement).not.toBeVisible()

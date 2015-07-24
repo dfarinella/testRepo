@@ -1,25 +1,4 @@
-# See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
-'context-menu':
-  'atom-text-editor': [
-    {
-      'label': 'Toggle rga-snippets'
-      'command': 'rga-snippets:toggle'
-    }
-  ]
-'menu': [
-  {
-    'label': 'Packages'
-    'submenu': [
-      'label': 'rga-snippets'
-      'submenu': [
-        {
-          'label': 'Toggle'
-          'command': 'rga-snippets:toggle'
-        }
-      ]
-    ]
-  }
-]
+
 
 
 # ===========================================================
@@ -27,8 +6,8 @@
 # ===========================================================
 
 '.text.html.basic':
-  'RGA Boilerplate HTML':
-    'prefix': 'rga HTML'
+  'DA Boilerplate HTML':
+    'prefix': 'da HTML'
     'body': """<!DOCTYPE html>
 <html lang="en">
   <head>
