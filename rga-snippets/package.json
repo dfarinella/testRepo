@@ -1,0 +1,18 @@
+{
+  "name": "rga-snippets",
+  "main": "./lib/rga-snippets",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "keywords": [
+  ],
+  "activationCommands": {
+    "atom-workspace": "rga-snippets:toggle"
+  },
+  "repository": "https://github.com/atom/rga-snippets",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  }
+}

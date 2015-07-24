@@ -1,0 +1,45 @@
+# See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
+'context-menu':
+  'atom-text-editor': [
+    {
+      'label': 'Toggle rga-snippets'
+      'command': 'rga-snippets:toggle'
+    }
+  ]
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'rga-snippets'
+      'submenu': [
+        {
+          'label': 'Toggle'
+          'command': 'rga-snippets:toggle'
+        }
+      ]
+    ]
+  }
+]
+
+
+# ===========================================================
+# ============== HTML SNIPPETS ==============================
+# ===========================================================
+
+'.text.html.basic':
+  'DA Boilerplate HTML':
+    'prefix': 'da HTML'
+    'body': """<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>RGA SNIPPETS TEST</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" href="${2:main}.css">
+  </head>
+  <body>
+    <!-- page content -->
+    <script src="${3:main}.js"></script>
+  </body>
+</html>
+"""
