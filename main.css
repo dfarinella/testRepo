@@ -1,0 +1,9 @@
+# minImg {
+  position: absolute;
+  top: 2 px;
+  left: 10 px;
+  width: 35 px;
+  height: 45 px;
+  background-image:url();
+  display: block;
+}
