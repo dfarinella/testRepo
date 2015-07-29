@@ -1,0 +1,27 @@
+# ===========================================================
+# ============== HTML SNIPPETS ==============================
+# ===========================================================
+'.text.html.basic':
+
+  # Boirler Plate HTML Code
+  'DA Boilerplate HTML':
+    'prefix': 'da HTML'
+    'body': """<!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <title>${1:title}</title>
+          <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+          <link rel="stylesheet" href="${2:main}.css">
+        </head>
+        <body>
+          <!-- page content -->
+          <script src="${3:main}.js"></script>
+        </body>
+      </html>
+      """
+
+  # Div w ID + Class
+  'DA Div w  ID + Class':
+    'prefix': 'da divIdClass'
+    'body': '<div id="$1" class="$2">$3</div>'

@@ -1,0 +1,16 @@
+# ===========================================================
+# =============== CSS SNIPPETS ==============================
+# ===========================================================
+'.source.css':
+  'DA Image ID':
+    'prefix': 'da Image ID'
+    'body': """# $1 {
+      position: absolute;
+      top: $2 px;
+      left: $3 px;
+      width: $4 px;
+      height: $5 px;
+      background-image:$6
+      display: block;
+    }
+    """

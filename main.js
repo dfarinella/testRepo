@@ -1,4 +1,0 @@
-function onReady ()
-{
-  console.log();
-}

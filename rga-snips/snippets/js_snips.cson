@@ -1,0 +1,249 @@
+# ===========================================================
+# ============== JAVASCRIPT SNIPPETS ========================
+# ===========================================================
+'.source.js':
+
+  # ----------------------------------------------------------------
+  # Ad Setup -------------------------------------------------------
+  # ----------------------------------------------------------------
+  # [F] InitAd
+  'DA InitAd':
+    'prefix': 'da initAd'
+    'body': """window.clickTag = 'http://caniuse.com';
+
+if (!window.console) window.console = {};
+if (!window.console.log) window.console.log = function () { };
+
+function initAd() {
+	'use strict';
+
+  var ${1:divID} = getEl('${2:itemName}'),
+		delay,
+		adWidth = 0,
+		adHeight = 0,
+		iOS = false,
+		adSeen = false,
+		animated = [/* LIST ITEMS TO BE ANIMATED */];
+
+  getUserAgent();
+	adClickThru();
+	adReset();
+}
+
+window.onload = function(){
+	initAd();
+};
+"""
+
+  # [F] Get Element by ID
+  'DA Get Element by ID':
+    'prefix': 'da getElemID'
+    'body': """function getEl(elem) {
+    		return document.getElementById(elem);
+    	}
+    """
+
+  # [F] Window onLoad
+  'DA Window.onLoad':
+    'prefix': 'da winOnLoad'
+    'body': """window.onload = function(){
+	$1
+};
+"""
+
+  # [F] Get User Agent
+  'DA Get User Agent':
+    'prefix': 'da getUserAgent'
+    'body': """function getUserAgent() {
+  		var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  		if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) ){
+  			iOS = true;
+  			window.console.log('userAgent: iOS');
+  		} else if( userAgent.match( /Android/i ) ) {
+  			window.console.log('userAgent: Android');
+  		} else {
+  			window.console.log('userAgent: desktop');
+  		}
+  	}
+    """
+
+  # ----------------------------------------------------------------
+  # INTERACTIVITY --------------------------------------------------
+  # ----------------------------------------------------------------
+
+  # [F] Ad Interactivity
+  'DA Ad Interactivity':
+    'prefix': 'da adInteractivity'
+    'body': """// -----------------------------------------------------------
+// INTERACTIVITY ---------------------------------------------
+// -----------------------------------------------------------
+function onAdClick(e) {
+	window.open(window.clickTag);
+}
+
+function onAdHover(e) {
+	addClass(cta, 'cta-hover');
+	removeClass(ctaOver, 'alpha0');
+}
+
+function onAdOut(e) {
+	removeClass(cta,'cta-hover');
+	addClass(ctaOver, 'alpha0');
+}
+
+function adClickThru() {
+	ad.style.cursor = 'pointer';
+	//ad.addEventListener('touchEnd', onAdClick, false);
+	//ad.addEventListener('click',    onAdClick, false);
+	addEvent(ad, 'touchEnd', onAdClick);
+	addEvent(ad, 'click', onAdClick);
+}
+
+function adRollover() {
+	ad.style.cursor = 'pointer';
+	//ad.addEventListener('mouseover', onAdHover, false);
+	//ad.addEventListener('mouseout', onAdOut, false);
+	addEvent(ad, 'mouseover', onAdHover);
+	addEvent(ad, 'mouseout', onAdOut);
+}
+
+function onAdClick(e) {
+	window.open(window.clickTag);
+}
+"""
+
+  # ----------------------------------------------------------------
+  # ANIMATION ------------------------------------------------------
+  # ----------------------------------------------------------------
+
+  # [F] Ad Animation
+  'DA Ad Animation':
+    'prefix': 'da adAnimation'
+    'body': """function adReset() {
+	if(adSeen){
+		addClass(ad, 'vis-off');
+		clearTimeout(delay);
+		resetStates(animated, frame0);
+	} else {
+		recordStates(animated);
+		frame0();
+	}
+}
+
+function frame0() {
+  adSeen = true;
+  addClass(lake, 'make-waves');
+  replaceClass(device, 'device-big', 'device-shrink');
+  removeClass(ad, 'vis-off');
+  delay = setTimeout(frame1, 3000);
+}
+
+function frame1() {
+
+  delay = setTimeout(frame1, 3000);
+}
+
+function frame2() {
+
+  delay = setTimeout(frame2, 3000);
+}
+
+function frame3() {
+
+  delay = setTimeout(frame3, 3000);
+}
+
+function frame4() {
+
+  // If replay exists
+  enableReplay();
+}
+"""
+
+
+  # ----------------------------------------------------------------
+  # ANIMATION HELPERS ----------------------------------------------
+  # ----------------------------------------------------------------
+
+  'DA Animation Helpers':
+    'prefix': 'da animHelpers'
+    'body': """// -----------------------------------------------------------
+// CLASS UTILS -----------------------------------------------
+// for older browsers that don't support classList -----------
+// -----------------------------------------------------------
+function hasClass(elem, cname) {
+	// whole word search
+	var re = new RegExp('\\b'+cname+'\\b','gi');
+	if(elem.className.match(re)) return true;
+	else return false;
+}
+
+function addClass(elem, cname) {
+	if(hasClass(elem,cname)) window.console.log('addClass warning: "'+cname+'" already exists on '+elem.innerHTML);
+	else elem.className += ' '+cname;
+}
+
+function removeClass(elem, cname) {
+	if(hasClass(elem,cname)) {
+		if(elem.className.indexOf(' '+cname) > -1) elem.className = elem.className.replace(' '+cname, '');
+		else if(elem.className.indexOf(cname+' ') > -1) elem.className = elem.className.replace(cname+' ', '');
+		else elem.className = elem.className.replace(cname, '');
+	}
+	else window.console.log('removeClass warning: "'+cname+'" not found on '+elem.innerHTML);
+}
+
+function replaceClass(elem, cname1, cname2) {
+	removeClass(elem,cname1);
+	addClass(elem,cname2);
+}
+"""
+
+  # ----------------------------------------------------------------
+  # REPLAY ---------------------------------------------------------
+  # ----------------------------------------------------------------
+
+  # [F] Replay Code
+  'DA Replay Functionality':
+    'prefix': 'da replayCode'
+    'body': """// -----------------------------------------------------------
+// REPLAY FUNCTIONALITY --------------------------------------
+// -----------------------------------------------------------
+function enableReplay() {
+	replay.addEventListener('touchEnd', replayHandler, false);
+	replay.addEventListener('click',    replayHandler, false);
+	replay.addEventListener('mouseover', replayHover, false);
+	replay.addEventListener('mouseout', replayOut, false);
+}
+
+function disableReplay() {
+	replay.removeEventListener('touchEnd', replayHandler, false);
+	replay.removeEventListener('click',    replayHandler, false);
+	replay.removeEventListener('mouseover', replayHover, false);
+	replay.removeEventListener('mouseout', replayOut, false);
+}
+
+function recordStates(elements) {
+	var i = elements.length;
+	//var log = '';
+	while(i--){
+		elements[i].cl = '';
+		elements[i].cl += elements[i].className;
+		//log += elements[i].id + ': ' + elements[i].className + '\n';
+	}
+	//window.console.log('recordStates:\n'+log);
+}
+
+function resetStates(elements, callback) {
+	var i = elements.length;
+	//var log = '';
+	while(i--){
+		(elements[i].cl) ? elements[i].className = elements[i].cl : elements[i].className = '';
+		//log += elements[i].id + ': ' + elements[i].className + '\n';
+	}
+	//window.console.log('resetStates:\n'+log);
+	if(callback) {
+		var dly = elements.length * 10; // adds .01 seconds delay for each element
+		setTimeout(function(){callback.apply();}, dly);
+	}
+}
+"""
